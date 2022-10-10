@@ -7,8 +7,8 @@
     <compound name="TrackMeshRoot" inherit="MemStruct">
         PC: 80 bytes
         <add name="a" type="uint64"  />
-        <add name="track_data" type="ArrayPointer" arg="count0" template="SomeData"/>
-        <add name="next_data" type="ArrayPointer" arg="next_count" template="NextData"/>
+        <add name="offset_data" type="ArrayPointer" arg="count0" template="SomeData"/>
+        <add name="track_ref_data" type="ArrayPointer" arg="next_count" template="NextData"/>
 <!--        <add name="p2" type="Pointer" />-->
         <add name="last" type="ArrayPointer" arg="last_count" template="LastData"/>
         <add name="count0" type="uint"  />
@@ -22,7 +22,7 @@
 
     <compound name="SomeData" inherit="MemStruct">
         PC: 64 bytes
-        <add name="some_name" type="Pointer" template="ZString"/>
+        <add name="offset_name" type="Pointer" template="ZString"/>
         <add name="z0" type="uint64" />
         <add name="z1" type="uint64" />
         <add name="float 0" type="float" />
@@ -39,12 +39,12 @@
 
     <compound name="NextData" inherit="MemStruct">
         PC: 48 bytes
-        <add name="name 0" type="Pointer" template="ZString"/>
-        <add name="name 1" type="Pointer" template="ZString"/>
+        <add name="name" type="Pointer" template="ZString"/>
+        <add name="file_without_extension" type="Pointer" template="ZString"/>
         <add name="a" type="uint" />
         <add name="b" type="uint" />
         <add name="c" type="uint64" />
-        <add name="name 2" type="Pointer" template="ZString"/>
+        <add name="offset" type="Pointer" template="ZString"/>
         <add name="d" type="uint64" />
     </compound>
 
