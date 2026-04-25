@@ -155,6 +155,8 @@ def cmd_new(args: argparse.Namespace) -> None:
     ovl.cfg = config
     ovl.game = game  # same as game_changed() ultimately does
     ovl.load_hash_table()
+    commands = {"update_aux": args.update_aux}
+    ovl.commands = commands
 
     if args.compression:
         try:
@@ -166,12 +168,10 @@ def cmd_new(args: argparse.Namespace) -> None:
     logging.info("Game: %s", ovl.game)
 
     try:
-        ovl.clear()    
         ovl.create(in_dir)
     except Exception as e:
         die(f"OvlFile.create failed: {e!r}")
 
-    commands = {"update_aux": args.update_aux}
     try:
         ovl.save(out_ovl, commands=commands)
     except Exception as e:
